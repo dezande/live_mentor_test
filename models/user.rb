@@ -1,11 +1,15 @@
 class User
-  attr_accessor :id, :email, :tag, :facebook, :twitter
+  attr_accessor :id, :email, :profiles, :facebook, :twitter
+  attr_writer :tags
 
   def initialize(data = {})
     @id = data['id']
     @email = data['email']
-    @tag = data['tags'].join(', ')
-    @facebook = Facebook.new(data['profiles']['facebook'])
-    @twitter = Twitter.new(data['profiles']['twitter'])
+    @tags = data['tags'].join(',')
+    @profiles = Profile.new(data['profiles'])
+  end
+
+  def tags
+    '"' + @tags + '"'
   end
 end
