@@ -39,8 +39,8 @@ class LiveMentor
 end
 
 file = File.new('users.json')
-profiles_hash = JSON.parse(file.read)
-live_mentor = LiveMentor.new(profiles_hash)
+users_hash = JSON.parse(file.read)
+live_mentor = LiveMentor.new(users_hash)
 
 # p live_mentor.to_csv_with_keys
 File.open('users.csv', 'w') { |f| f.write(live_mentor.to_csv_with_keys) }
